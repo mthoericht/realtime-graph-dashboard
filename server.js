@@ -10,12 +10,14 @@ server.listen(config.port);
 
 var currentGraph;
 
+
 app.configure(function()
 {
 	//static files
 	app.use(express.static(__dirname + '/public/frontend'));
 	app.use(express.static(__dirname + '/public/backend'));
 });
+
 
 // on request the root-path
 app.get('/', function (req, res)
@@ -24,6 +26,7 @@ app.get('/', function (req, res)
 	res.sendfile(__dirname + '/public/frontend/client.html');
 });
 
+
 // especially the backend-path
 app.get('/backend', function (req, res)
 {
@@ -31,11 +34,12 @@ app.get('/backend', function (req, res)
 	res.sendfile(__dirname + '/public/backend/backend.html');
 });
 
+
 // Websocket-Connection-listener
 io.sockets.on('connection', function (socket)
 {
 	//if currentgraph is undefined set the default-graph
-	//currentGraph = defaultGraph  || '';
+
 	// the client is connected
 	socket.emit('graph', { time: new Date(), graph: currentGraph });
 
@@ -48,5 +52,6 @@ io.sockets.on('connection', function (socket)
 		io.sockets.emit('graph', { time: new Date(), graph: currentGraph });
 	});
 });
+
 
 console.log('The server is started! Please open this URL: http://127.0.0.1:' + config.port + '/');

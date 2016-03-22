@@ -3,14 +3,16 @@
 	<head>
 		<title>Node.js Chat</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="style-backend.css" />
 		<script src="socket.io/socket.io.js"></script>
 		<script src="jquery.min.js"></script>
 		<script src="backend.js"></script>
 	</head>
 	<body>
-		<header>Graph Backend</header>
+		<header><h2>Graph Backend</h2></header>
+		<section id="inputFields"></section>
 		<footer>
+			<input id="add" type="button" class="btn" value="add" />
 			<input id="send" type="submit" class="btn" value="send" />
 		</footer>
 	</body>
