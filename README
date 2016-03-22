@@ -1,0 +1,9 @@
+realtime-graph-dashboard
+======================
+
+It's a simple application for graph-rendering depends on websockets (node.js & socket.io)
+
+
+start the application:
+1. "npm install" will choose the packages from the package.json (express & socket.io)
+2. "node server.js" will start the server
