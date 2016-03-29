@@ -28,8 +28,10 @@ $(document).ready(function()
 					{
 						return graphObject.label;
 					}),
+
 					datasets: [
 						{
+							//Config/Style of the graph
 							label: "currentGraph",
 							fillColor: "rgba(220,50,50,0.2)", //red
 							strokeColor: "rgba(220,220,220,1)",
@@ -37,6 +39,8 @@ $(document).ready(function()
 							pointStrokeColor: "#fff",
 							pointHighlightFill: "#fff",
 							pointHighlightStroke: "rgba(220,220,220,1)",
+
+							//Graph-values
 							data: currentGraph.map(function(graphObject)
 							{
 								return graphObject.data;
@@ -46,9 +50,9 @@ $(document).ready(function()
 				};
 
 				chartInstance = new Chart(ctx).Line(chartData);
-			}else
+			}else	//Update the current graph
 			{
-				//only value-update
+				//only value-change
 				if(data.graph.length == currentGraph.length)
 				{
 					for(var i = 0; i < currentGraph.length; i++)
@@ -57,7 +61,8 @@ $(document).ready(function()
 					}
 
 					chartInstance.update();
-				}else if(data.graph.length > currentGraph.length) //on new data
+
+				}else if(data.graph.length > currentGraph.length) //on new values/data => addData
 				{
 					for(var a = currentGraph.length; a < data.graph.length; a++)
 					{

@@ -17,7 +17,7 @@ $(document).ready(function()
 	// on new graph
 	socket.on('graph', function (data)
 	{
-
+		//backend => do nothing
 	});
 
 	// send graph
@@ -25,7 +25,7 @@ $(document).ready(function()
 	{
 		//var text = $('#text').val();
 
-		//update all values
+		//update all values in the currentGraph-Array
 		for(var i = 0; i < inputFields.length; i++)
 		{
 			currentGraph[i]	= {};
@@ -36,8 +36,10 @@ $(document).ready(function()
 		socket.emit('graph', { graph: currentGraph });
 	}
 
-	// onclick
+	// Send
 	$('#send').click(send);
+
+	//new input-field
 	$('#add').click(addInputField);
 
 	initInputFields();
@@ -47,6 +49,7 @@ $(document).ready(function()
 });
 
 
+//The number of inputfield depends of the array-size
 function initInputFields()
 {
 	inputParent         = document.getElementById("inputFields");
@@ -58,6 +61,7 @@ function initInputFields()
 }
 
 
+//Simple function to add one Inputfield-line (With label and value)
 function addInputField()
 {
 	inputFields.push(document.createElement('div'));
